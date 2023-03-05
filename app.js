@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const { expressjwt } = require('express-jwt')
 const { port, jwtSecretKey } = require('./config')
-const { resultHandler, errorHandler } = require('./middleware')
+const { errorHandler } = require('./middleware')
 const userRouter = require('./router/user')
 const userinfoRouter = require('./router/userinfo')
 
@@ -11,8 +11,6 @@ const app = express()
 app.use(cors())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
-
-app.use(resultHandler)
 
 // jwt 解析
 app.use(
